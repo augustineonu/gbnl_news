@@ -1,0 +1,2 @@
+/Users/augustineonu/StudioProjects/mymedicare_mobile/android/app/.cxx/Debug/284d3x3g/x86_64/CMakeFiles/edit_cache.dir
+/Users/augustineonu/StudioProjects/mymedicare_mobile/android/app/.cxx/Debug/284d3x3g/x86_64/CMakeFiles/rebuild_cache.dir
