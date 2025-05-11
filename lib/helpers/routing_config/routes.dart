@@ -1,4 +1,4 @@
-import 'package:gbnl_news/features/auth/paages/splash_screen.dart';
+import 'package:gbnl_news/features/auth/pages/splash_screen.dart';
 import 'package:gbnl_news/features/news_feed/pages/news_feed.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -19,7 +19,7 @@ class AppRoutes {
         page: () => const NewsFeedPage(
               fullName: '',
             ),
-        // binding: NewsFeedBinding(),
+        binding: NewsFeedBinding(),
         ),
   ];
 }

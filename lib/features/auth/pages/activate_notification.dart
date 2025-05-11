@@ -1,15 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gbnl_news/features/auth/data/view_model/auth_view_model.dart';
 import 'package:gbnl_news/features/news_feed/data/view_model/news_feed_vm.dart';
-import 'package:gbnl_news/features/news_feed/pages/news_feed.dart';
 import 'package:gbnl_news/helpers/styles/color_styles.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ActivateNotification extends StatefulWidget {
-  const ActivateNotification({super.key,
-  required this.fullName});
+  const ActivateNotification({super.key, required this.fullName});
   final String fullName;
 
   @override
@@ -21,62 +21,12 @@ class _ActivateNotificationState extends State<ActivateNotification> {
       FlutterLocalNotificationsPlugin();
 
   final newsFeedViewModel = Get.put(NewsFeedViewModel());
+  final authViewModel = Get.find<AuthViewModel>();
   @override
   void initState() {
     super.initState();
 
     newsFeedViewModel.fetchNews();
-  }
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    _requestNotificationPermission();
-    super.didChangeDependencies();
-  }
-
-  Future<void> _requestNotificationPermission() async {
-    // For iOS, this will trigger the system dialog
-    if (Theme.of(context).platform == TargetPlatform.iOS) {
-      final bool? result = await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              IOSFlutterLocalNotificationsPlugin>()
-          ?.requestPermissions(
-            alert: true,
-            badge: true,
-            sound: true,
-          );
-
-      String message = result == true
-          ? 'Notification permissions granted'
-          : 'Notification permissions denied';
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-        ),
-      );
-    }
-    // For Android, use permission_handler
-    else {
-      final status = await Permission.notification.request();
-
-      String message = '';
-      if (status.isGranted) {
-        message = 'Notification permissions granted';
-      } else if (status.isDenied) {
-        message = 'Notification permissions denied';
-      } else if (status.isPermanentlyDenied) {
-        message = 'Notification permissions permanently denied, open settings';
-        await openAppSettings();
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-        ),
-      );
-    }
   }
 
   @override
@@ -117,9 +67,10 @@ class _ActivateNotificationState extends State<ActivateNotification> {
               const Spacer(),
               ElevatedButton(
                   onPressed: () {
-                    Get.to(() => NewsFeedPage(
-                          fullName: widget.fullName,
-                        ));
+                    // Get.to(() => NewsFeedPage(
+                    //       fullName: widget.fullName,
+                    //     ));
+                    authViewModel.requestNotificationPermission();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,

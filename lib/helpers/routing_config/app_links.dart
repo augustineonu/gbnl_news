@@ -13,17 +13,14 @@ class AppLinks {
 
   static const welcome = "/";
   static const splash = "/splash";
-  static const onboarding = "/onboarding";
   static const login = "/login";
   static const newsFeed = "/newsFeed";
 
-  // static const chatAction = "/user/chat/:key/:action";
 
   final links = {
     // auth routes
     "welcome": welcome,
     "splash": splash,
-    "onboarding": onboarding,
     "login": login,
     "newsFeed": newsFeed,
   };

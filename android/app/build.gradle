@@ -58,23 +58,6 @@ android {
         versionName flutterVersionName
     }
 
-        // signingConfigs {
-            // signingConfig signingConfigs.debug
-        // create("release") {
-        //     keyAlias = keystoreProperties["keyAlias"] as String
-        //     keyPassword = keystoreProperties["keyPassword"] as String
-        //     storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-        //     storePassword = keystoreProperties["storePassword"] as String
-        // }
-
-        //    release {
-        //     keyAlias 'myMedicare'        // Replace with your key alias
-        //     keyPassword 'myMedicare'   // Replace with your key password
-        //     storeFile file('myMedicare-keystore.jks') // Path to your keystore file
-        //     storePassword 'myMedicare' // Replace with your keystore password
-        // }
-    // }
-
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

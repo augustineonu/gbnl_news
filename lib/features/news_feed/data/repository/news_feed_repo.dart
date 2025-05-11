@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:gbnl_news/features/news_feed/data/model/news_article_model.dart';
 import 'package:gbnl_news/helpers/exception_helper.dart';
 import 'package:gbnl_news/helpers/network.dart';
-
-import '../../../../helpers/api_response_model.dart';
 
 class NewsFeedRepository {
   var logger = log("NewsFeedRepository");
